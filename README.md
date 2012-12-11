@@ -21,10 +21,14 @@ Kryten takes it's name from Kryten of the British television series [Red Dwarf](
 
 ## Why Kryten?
 
-Kryten allows presenters to focus on the presentation without having to type code. It types the code for you and runs it. With Kryten, you present live code demos from prewritten presentation files. Write the presentation beforehand, and play it, step-by-step with Kryten. You can pause the presentation at any time, play backwards, and forward. It also edit files for you using a built-in editor.
+Kryten allows presenters to focus on the presentation without having to type code. It types the code for you and runs it. With Kryten, you present live code demos from prewritten presentation files. Write the presentation beforehand, and play it, step-by-step with Kryten. You can pause the presentation at any time, play backwards, and forward. It also edits files for you using a built-in editor.
 
 When running on Mac, Kryten has the ability of reading comments in the code using text-to-speech. 
 This allows turning a code into a video tutorial without human intervention.
+
+Moreover it always checks the difference between the current files and what they are supposed to be and it only types in the differences.
+
+While it can edit any types of file interactively, the shell commands are restricted to bash and Python commands.
 
 ## Installing Kryten  
 	
@@ -53,7 +57,7 @@ Try an play an existing file:
 
 This example presentation presents a couple Python loops.
     
-`python.play`
+`example1.play`
 
 ```
 # a simple loop
@@ -75,7 +79,7 @@ quit
 
 Kryten uses diff comparison to update files on the system. Use `@@UPDATE@@ path.to/file` to start a file edit block. Write how the file should look post-edit and end with `@@END@@`.
 
-`file_edit.play`
+`example2.play`
 
 ```
 # create a file
