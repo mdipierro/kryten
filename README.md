@@ -11,11 +11,11 @@
 
 ## What is Kryten?
 
+[Here](http://vimeo.com/20743963) is a presentation made with Kryten.
+
 Kryten is Unix Shell tool that makes terminal-based presentations a snap to write, present, and share.
 
 Kryten takes it's name from Kryten of the British television series [Red Dwarf](http://www.youtube.com/watch?v=CrUuuyg0Y54).
-
-You can see an PyCon presentation using Kryten on [YouTube](http://www.youtube.com/watch?v=M5IPlMe83yI).
 
 ## Why Kryten?
 
