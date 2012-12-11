@@ -15,7 +15,9 @@
 
 Kryten is Unix Shell tool that makes terminal-based presentations a snap to write, present, and share.
 
-Kryten takes it's name from Kryten of the British television series [Red Dwarf](http://www.youtube.com/watch?v=CrUuuyg0Y54).
+Kryten takes it's name from Kryten of the British television series [Red Dwarf](http://en.wikipedia.org/wiki/Red_Dwarf)
+
+![Kryten](http://homepages.nildram.co.uk/~polymorp/txt/kryten.gif)
 
 ## Why Kryten?
 

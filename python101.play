@@ -1,0 +1,453 @@
+$ clear
+# Python is a general-purpose high-level programming language.
+# It is very easy to learn
+
+# in Python variables are references
+a = 3
+a = 'hello world'
+a = [1,2,3]
+b = a
+print a, b
+b[1] = 7
+print a, b
+# in Python variables do not have a type, objects do
+print type(3)
+a = 3
+print type(a)
+print type('hello world')
+a = 'hello world'
+print type(a)
+
+# strings can be delimited in multiple equivalent ways
+a = 'this is an ASCII string'
+a = "this is an ASCII string"
+a = '''this is an ASCII string'''
+a = """this is an ASCII string"""
+
+# strings can be concatenated
+
+a = 'hello'
+b = 'world'
+c = a+' '+b
+print c
+
+# in Python you always loop using an iterator
+# a list is an example of iterator
+a = [4,6,7]
+for i in a: print i
+
+# you can make lists with the function range
+for i in range(0,5): print i
+
+# you can append elements to lists
+a = []
+a.append('x')
+a.append('y')
+print a
+# you can insert elements
+a.insert(0,'u')
+print a
+# delete elements
+del a[2]
+print a
+# concatenate lists
+a = a+a+a
+print a
+# slice them
+a = a[1:-1]
+print a
+# and of course query them for length
+print len(a)
+
+# a tuple is a like a list but you cannot change its elements
+a = [1,2,3]
+b = (1,2,3)
+# let us try with the list a
+a[1]='changed'
+print a
+# let us try the same with a tuple
+b[1]='changed'
+# that is called a traceback
+
+# tuples are useful to pack and unpack variables
+
+(a,b,c) = (1, 'hello', 8)
+print a
+print b
+print c
+
+# Python has dictionaries and they are hash tables for key-value store
+a = {}
+a['key']='value'
+a['Max']='111-111-1111'
+a['John']='123-123-1234'
+
+print a['Max']
+print a.keys()
+print a.values()
+print a.items()
+print a
+
+# you delete values
+del a['Max']
+print a
+
+# you can ask for membership
+
+print 'john' in a
+
+# there is another syntax for dictionaries
+a = {'max':'111-111-1111', 'John':'123-123-1234'}
+a = dict(max='111-111-1111', John='123-123-1234')
+
+# almost everything is hashable
+print hash("hello world")
+
+# in Python blocks of code are delimited by indentation
+for i in range(3):
+    for j in range(3):
+        print i,j
+
+
+# some times you need loop and count
+pets = ['dog','cat','mouse']
+for i, pet in enumerate(pets):
+    print i, pet
+
+
+# if you prefer you can loop with while
+i = 0 
+while i<3:
+    print i
+    i = i+1 
+
+
+# you can exit loops with break
+for i in range(10):
+    print i
+    if i==3: break
+
+
+# sometimes you want to skip a loop and jump to the next iteration
+for i in range(10):
+    if 3<i<9: continue
+    print i
+
+
+# if statements are also very easy,
+# we generate a random number between 0 and 1
+import random
+x = random.random()
+# and we check for its value
+if x<0.5:
+   print 'x less than 0.5'
+
+
+# for a more complex example let us write a program
+# to factorize a random input number
+rm tmp_*.py
+@@UPDATE@@ tmp_factorize.py
+# we import two modules
+import random
+import math
+
+# we generate a random number
+x=random.randint(0,10e5)
+
+# we loop over all possible factors y
+y = 2
+while y <= x:
+    # we assume y is not factor of x
+    power = 0
+    # but if it is a factor... 
+    while x % y  == 0:
+         # we divide x by y and count the power
+         power, x = power+1, x/y
+    # and if y is a factor we print it
+    if power:
+         print '%i ^ %i' % (y,power)
+    # try next number
+    y = y+1
+@@END@@
+
+# now we run the program
+python tmp_factorize.py
+
+# Python throws exceptions on error.
+@@UPDATE@@ tmp_exceptions.py
+if True:
+    for i in [1,2,3]:
+        print 1/(i-2)
+@@END@@
+
+python tmp_exceptions.py
+
+# exceptions can be caught
+
+@@UPDATE@@ tmp_exceptions.py
+try:
+    for i in [1,2,3]:
+        print 1/(i-2)
+except ZeroDivisionError, e:
+    print 'division by zero!'
+except Exception, e:
+    print 'some other error occurred: %s' % e
+finally:
+    print 'cleanup code goes here'
+@@END@@
+
+python tmp_exceptions.py
+
+# functions are very easy in Python
+def f(a):
+    return a*2
+
+print f(4)
+print f('hello')
+
+# functions can take multiple arguments are return multiple arguments
+def g(a,b,c):
+    return a,a+b,a+b+c
+
+print g(3,5,6)
+print g(3,b=5,c=6)
+
+# you can pass arguments out of order
+print g(c=6,b=5,a=3)
+
+# you can give default values
+def g(a,b=5,c=5):
+    return a,a+b,a+b+c
+
+print g(3)
+
+# Sometimes you are not sure how many arguments you will be passing to a function
+def h(*ks,**kv):
+    return sum(ks)+sum(kv.values()), ks, kv
+
+print h(3)
+print h(3,5,6)
+print h(3,5,6,8,9)
+print h(3,5,a=6,b=17)
+
+# classes in Python are different than in languages like C++ and Java
+# they are simply models for containers
+class A: pass
+
+# now we make an instance of the class
+a=A()
+
+# and we can store stuff inside
+a.x=5
+a.y=8
+
+# now x and y belong to the instance
+# we can also store stuff into the class
+A.z = 7
+
+# and retrieve the stuff
+print a.x, a.y, a.z
+
+# notice that if we make another instance
+b = A()
+
+# z is in there
+print b.z
+
+# but x and y are not
+print a.x
+
+# you can create member variables in a constructor
+class C:
+    def __init__(this,x,y):
+        this.x = x
+        this.y = y
+
+a = C(3,5)
+print a.x, a.y
+
+
+# notice that 'this' MUST be the first argument of the constructor 
+# 'this' plays the same role as Java 'this'
+# Python programmers prefer using 'self' instead of 'self'
+
+class C:
+    def __init__(self,x,y):
+        self.x = x
+        self.y = y
+
+
+# 'self' or 'this' are not keywords but variables
+
+# __init__ is a special method but you can define other additional methods
+
+@@UPDATE@@ tmp_class.py
+class C:
+    def __init__(self,x,y):
+        self.x = x
+        self.y = y
+    def getxy(self):
+        return self.x,self.y
+
+b = C(4,5)
+print b
+@@END@@
+
+python tmp_class.py
+
+# __init__ is not the only special method. there are more for example
+
+@@UPDATE@@ tmp_class.py
+class C:
+    def __init__(self,x,y):
+        self.x = x
+        self.y = y
+    def getxy(self):
+        return self.x,self.y    
+    def __add__(self,other):
+        return C(self.x+other.x, self.y+other.y)
+
+a = C(1,3)
+b = C(4,5)
+
+# and now this
+c = a + b 
+# is the same as this
+c = a.__add__(b)
+
+# and they generate
+print c.getxy()
+@@END@@
+
+python tmp_class.py
+
+# Python is very handy to handle files
+# we can create a file for writing
+f1 = open('tmp_file.txt','wb')
+# write something in it
+f1.write('dataxyz')
+# reopen for reading
+f2 = open('tmp_file.txt','rb')
+# read all data
+data = f2.read()
+# and print what we got
+print data
+
+# normally you define functions with
+def f(a,b): return a+b
+
+# this can also be broken into two steps
+# step one: we define the function without giving it a name
+lambda a,b: a+b
+# step two: we give it a name
+f = lambda a,b: a+b
+# we can now call
+print f(3,4)
+# why would we do such a thing?
+# consider this definition of a derivative
+def D(f,x,h=1e-5): return (f(x+h)-f(x))/h
+# we can now compute the derivative of the function sin at 1 with
+from math import sin
+print D(sin,5)
+# what if we had 
+def g(x,y): return sin(x*y)
+# and we wanted the derivative respect to y for x=7, y=1?
+print D(lambda y: g(7,y),1)
+# notice lambda y says y is the variable
+
+# sometimes you have code in a string
+a = "x+y"
+# an you want it to be executed for given values of b and c
+# yes you can do it in Python, first store b and c in a dict
+env = dict(x=5,y=7)
+# now use eval
+print eval(a,env)
+
+# if your string contained a statement instead of an expression
+# then the syntax becomes
+a = "print x+y"
+exec a in env
+
+# the real power of Python is in modules, there are modules for everything
+
+# for example
+import math
+# you can check what a module contains
+dir(math)
+# and you can ask Python for help
+help(math.sin)
+# and of course you can call functions in modules
+print math.sin(1)
+
+# the pickle module allows you to serialize objects
+@@UPDATE@@ tmp_pickle.py
+import pickle
+class A: pass
+a = A()
+a.x = 6
+pickle.dump(a,open('tmp_pickle.pickle','wb'))
+@@END@@
+
+python tmp_pickle.py
+
+# pickled data be de-serialized
+@@UPDATE@@ tmp_pickle.py
+import pickle
+# notice class A must be defined to un-pickle
+class A: pass
+b = pickle.load(open('tmp_pickle.pickle','rb'))
+print b.x
+@@END@@ 
+
+python tmp_pickle.py
+
+# the time module is useful to waste some time
+import time
+time.sleep(1) # one second!
+
+# but datetime is better to manipulate dates and times and intervals
+import datetime
+today = datetime.date.today()
+print today
+print today.day, today.month, today.year
+now = datetime.datetime.now()
+print now
+print now.day, now.month, now.year, now.hour, now.minute, now.second
+midnight = datetime.datetime(today.year, today.month, today.day, 0,0,0)
+print (now - midnight).seconds
+
+# we have used the random module already
+# let us play with it some more
+import random
+# we make a list of 1000 random numbers
+v = [random.random() for i in range(1000)]
+# and a function to create the expectation value of a function
+def E(f,v): return sum(f(x) for x in v)/len(v)
+# and now we can compute an average
+mu = E(lambda x:x,v)
+# the variance
+variance = E(lambda x:(x-mu)**2,v)
+# the standard deviation
+import math
+sigma = math.sqrt(variance)
+# we can compute skewness
+skewness = E(lambda x:((x-mu)/sigma)**3,v)
+# and the kurtosis
+kurtosis = E(lambda x:(x/sigma)**4,v)
+
+# if we make a random integer in range
+a = random.randint(10,20)
+# and if we have a list we can pick a random element from it
+a = ['a','b','c','d','e']
+print random.choice(a)
+
+# module urllib allows you to download web pages
+import urllib
+html = urllib.urlopen('http://python.org').read()
+print html[:100]+'...'+html[-100:]
+# it is useful to download all sort of data from the web
+
+# produced by Massimo Di Pierro with Kryten
+# you can redistrubute this video freely
+
+quit
