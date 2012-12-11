@@ -135,3 +135,7 @@ In addition to the standard -p[lay] argument, there a few more advanced arguemnt
 Copyright © 2012 Massimo DiPierro.  
 Licensed under the BSD license.
 <http://opensource.org/licenses/BSD-2-Clause>
+
+## Thanks
+
+Thanks for Devon Blandin for help with the docs and text alignment. 
