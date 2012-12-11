@@ -5,7 +5,7 @@
 # created by Massimo Di Pierro
 # this program takes its name from Kryten
 # http://www.youtube.com/watch?v=CrUuuyg0Y54
-# license: you cannot remove this comment nor the link above
+# license: http://opensource.org/licenses/BSD-2-Clause
 #
 # Commands in shell:
 #   SPACE execute and next line
