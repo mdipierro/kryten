@@ -80,6 +80,7 @@ print 'hello world'
 quit
 """
 
+import platform
 import difflib
 import time
 import os
@@ -132,7 +133,13 @@ def is_shell_command(command):
 
 def say(text):
     for key, value in CORRECTIONS.items(): text = text.replace(key,value)
-    os.system('say "%s"' % text.replace('"','\\"').replace("'","\\'"))
+    text = text.replace('"','\\"').replace("'","\\'")
+    if platform.mac_ver()[0]:
+        command = 'say "%s"' % text
+    else: #assume linux
+        command = 'espeak -s 120 "%s"' & text 
+    os.system(command)
+        
 
 def press_key():
     fd = sys.stdin.fileno()
