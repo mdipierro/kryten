@@ -104,6 +104,8 @@ import sys
 import traceback
 import termios
 import shutil 
+import fcntl
+import struct
 
 BORDER = 6
 TEMPFILENAME = '/tmp/kryten.txt'
@@ -405,7 +407,19 @@ def read_command(i,fileobj,options):
                 return '', 'quit'
             new_line = new_line.rstrip()
             postfix=new_line.replace('@@UPDATE@@','edit')
-            if not postfix.startswith('@@') and not postfix.startswith('%'):
+            if not postfix.startswith('@@') and not postfix.startswith('%'):                
+                line_width = len(postfix) + len(prompt)
+                (console_width, console_height) = getTerminalSize()
+                print console_width, console_height
+                h = '# ' if postfix.startswith('# ') else ''
+                while line_width > console_width:
+                    shift = console_width-len(prompt)-1
+                    if postfix.startswith('`'):
+                        slow_print(prompt,postfix[2:shift],options)
+                    else:
+                        slow_print(prompt,postfix[:shift],options)
+                    postfix = h+postfix[shift:]
+                    line_width -= shift
                 if postfix.startswith('`'):
                     slow_print(prompt,postfix[2:],options)
                 else:
@@ -440,6 +454,32 @@ OS_COMMANDS = ['ls','rm','echo','mkdir','rmdir','find','open','say','cp','mv',
                'ssh','scp','ftp','grep','set','export','hg','diff','patch',
                'wget','curl','zip','unzip','tar','python','ps','kill','nohup','sudo','make']
 
+
+def getTerminalSize():
+    env = os.environ
+    def ioctl_GWINSZ(fd):
+        try:
+            cr = struct.unpack('hh', fcntl.ioctl(fd, termios.TIOCGWINSZ,'1234'))
+        except:
+            return
+        return cr
+    cr = ioctl_GWINSZ(0) or ioctl_GWINSZ(1) or ioctl_GWINSZ(2)
+    if not cr:
+        try:
+            fd = os.open(os.ctermid(), os.O_RDONLY)
+            cr = ioctl_GWINSZ(fd)
+            os.close(fd)
+        except:
+            pass
+    if not cr:
+        cr = (env.get('LINES', 25), env.get('COLUMNS', 80))
+
+        ### Use get(key[, default]) instead of a try/catch
+        #try:
+        #    cr = (env['LINES'], env['COLUMNS'])
+        #except:
+        #    cr = (25, 80)
+    return int(cr[1]), int(cr[0])
 
 def actor(command,code,history,options):
     try: meta,other= command.split(' ',1)
