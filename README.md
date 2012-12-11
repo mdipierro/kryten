@@ -30,14 +30,41 @@ Moreover it always checks the difference between the current files and what they
 
 While it can edit any types of file interactively, the shell commands are restricted to bash and Python commands.
 
+
 ## Installing Kryten  
 	
     pip install kryten
 
 or download [kryten.py](https://github.com/mdipierro/kryten/blob/master/kryten.py) from this repo.
 	
-
 ## Usage
+
+### Command line options
+
+```
+$ python kryten.py -h
+Usage: 
+    play                              (record mode)"
+    play [options] -p filename.play   (playback mode)"
+    play [options] -i input -o output (editor mode)"
+    
+
+Options:
+  --version             show program's version number and exit
+  -h, --help            show this help message and exit
+  -n, --nonblock        do not ask for intput
+  -d DELAY, --delay=DELAY
+                        typing delay
+  -p PLAY, --play=PLAY  file to play (play mode)
+  -i INPUT, --input=INPUT
+                        input file (editor mode)
+  -o OUTPUT, --output=OUTPUT
+                        output file (editor mode)
+  -s, --speak           read comments, mac only
+  -D, --debug           stops on tracbacks
+  -m MARKMIN, --markmin=MARKMIN
+                        saves markmin output (experimental)
+```
 
 ### Writing a presentation
 
@@ -97,23 +124,6 @@ with another line
 
 quit
 ```
-
-### Playing a presentation
-
-To load a presentation, use the -p[lay] argument to pass in a .play file.
-
-## Command Line arguments:
-
-In addition to the standard -p[lay] argument, there a few more advanced arguemnts to be used during the initialization of a presentation.
-
--h[help]
--n[onblock]  
--d[elay]  
--i[nput]  
--o[utput]  
--s[peak]  
--d[ebug]  
--m[arkmin]
 
 ## Interactive Commands
 
