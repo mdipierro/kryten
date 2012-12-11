@@ -96,9 +96,20 @@ quit
 
 To load a presentation, use the -p[lay] argument to pass in a .play file.
 
-![Playing a presentation](https://photos-1.dropbox.com/t/0/AACl_2MJwzVWlZClFKmhlBQY2URtOkpY3XzN1Ts1Bb4Vvg/10/1096930/png/2048x1536/2/1355234400/0/2/screenshot_python.png/nOVHlQnBi-fYrt4OMqd7vbNS4CpX1k5Ok324UfG9AmI)
+## Command Line arguments:
 
-## Commands
+In addition to the standard -p[lay] argument, there a few more advanced arguemnts to be used during the initialization of a presentation.
+
+-h[help]
+-n[onblock]  
+-d[elay]  
+-i[nput]  
+-o[utput]  
+-s[peak]  
+-d[ebug]  
+-m[arkmin]
+
+## Interactive Commands
 
 __Commands in shell:__  
 SPACE execute and move to next line  
@@ -117,19 +128,6 @@ s save partial
 x quickly execute end exit  
 (i intrecative mode - not yet suported sorry)
 	
-## Command Line arguments:
-
-In addition to the standard -p[lay] argument, there a few more advanced arguemnts to be used during the initialization of a presentation.
-
--h[help]
--n[onblock]  
--d[elay]  
--i[nput]  
--o[utput]  
--s[peak]  
--d[ebug]  
--m[arkmin]
-
 ## License
 
 Copyright © 2012 Massimo DiPierro.  
