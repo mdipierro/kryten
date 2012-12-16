@@ -417,7 +417,6 @@ def read_command(i,fileobj,options):
             if not postfix.startswith('@@') and not postfix.startswith('%'):                
                 line_width = len(postfix) + len(prompt)
                 (console_width, console_height) = getTerminalSize()
-                print console_width, console_height
                 h = '# ' if postfix.startswith('# ') else ''
                 while line_width > console_width:
                     shift = console_width-len(prompt)-1
