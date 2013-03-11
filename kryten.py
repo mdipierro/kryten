@@ -137,7 +137,7 @@ def say(text):
     if platform.mac_ver()[0]:
         command = 'say "%s"' % text
     else: #assume linux
-        command = 'espeak -s 120 "%s"' & text 
+        command = 'espeak -s 120 "%s"' % text
     os.system(command)
         
 
@@ -678,6 +678,7 @@ def play(options,actor=actor):
             sys.stdout, sys.stderr = STDOUT, STDERR
             if raw_input('\n\nkill kryten (y/n)?')[0].lower()=='y':
                 if not options.input: print QUOTE2
+                set_color('white')
                 sys.exit(0)
         except EOFError:
             sys.stdout.write('\n')
